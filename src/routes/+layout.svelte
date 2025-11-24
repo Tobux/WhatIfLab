@@ -16,12 +16,11 @@
 			<a href="/" class="btn text-xl btn-ghost">WhatIfLab</a>
 		</div>
 		<div class="flex-none gap-2">
-			<button class="btn btn-outline btn-sm"> Model Selector </button>
-			<button class="btn btn-sm btn-primary"> Manage Models & API Keys </button>
+			<button class="btn btn-outline btn-sm"> Quickstart Guide </button>
 		</div>
 	</nav>
 
-	<main class="max-w-10xl container mx-auto flex-1 p-4">
+	<main class="max-w-7xl container mx-auto flex-1 p-4">
 		{@render children()}
 	</main>
 </div>
