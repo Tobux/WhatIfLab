@@ -13,6 +13,7 @@
 	let promptText = $state('');
 	let promptComments = $state<Comment[]>([]);
 	let rawOutput = $state('');
+	let modifiedOutput = $state('');
 	let outputStats = $state({
 		time: 0,
 		tokens: 0
@@ -33,6 +34,6 @@
 	<ModelSettings bind:selectedModel={selectedModel} bind:temperature={temperature} bind:maxTokens={maxTokens} />
 	<SystemPrompt bind:value={systemPrompt} />
 	<PromptEditor bind:value={promptText} bind:comments={promptComments} onsubmit={handleSubmit} />
-	<OutputData bind:value={rawOutput} />
+	<OutputData bind:rawOutput={rawOutput} bind:modifiedOutput={modifiedOutput} />
 	<Statistics bind:stats={outputStats} />
 </div>
