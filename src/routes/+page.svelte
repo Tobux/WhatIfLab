@@ -6,7 +6,7 @@
 	import Statistics from '$lib/components/Statistics.svelte';
 	import type { Comment } from '$lib/types';
 
-	let selectedModel = $state('gpt-4o');
+	let selectedModel = $state('gpt-4.1');
 	let temperature = $state(0.7);
 	let maxTokens = $state(2048);
 	let systemPrompt = $state('');
