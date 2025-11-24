@@ -33,6 +33,12 @@ Prompt Engineering,” arXiv (Cornell University), Jun. 2024, doi: 10.48550/arxi
 [8] I. Joshi et al., “CoPrompter: User-Centric Evaluation of LLM Instruction Alignment for
 Improved Prompt Engineering,” arXiv (Cornell University), Nov. 2024, doi: 10.48550/arxiv.2411.06099.
 
+## License
+
+This software is provided free of charge for personal and non-commercial use only.
+Any commercial use, resale, or incorporation into commercial products or services
+is prohibited without prior written permission from the author.
+
 ## Developing
 
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
