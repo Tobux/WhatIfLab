@@ -1,10 +1,10 @@
 <script lang="ts">
 	import OutputViewer from './OutputViewer.svelte';
 
-	let { rawOutput = $bindable(''), modifiedOutput = $bindable('') } = $props();
+	let { rawOutput = $bindable(''), modifiedOutput = $bindable(''), enhancedPrompt = $bindable('') } = $props();
 
 	function viewEnhancedPrompt() {
-		// TODO
+		alert(enhancedPrompt);
 	}
 
 	function viewAIExplanation() {

@@ -74,6 +74,7 @@ export const generate = command(GenerateSchema, async (data) => {
 	return {
 		initialOutput: initialGeneration.text,
 		editedOutput: editedGeneration.text,
+        enhancedPrompt: editedPromptResult.text,
 		explanation: initialGeneration.text,
 		initialUsage: initialGeneration.usage,
 		editedUsage: editedGeneration.usage,

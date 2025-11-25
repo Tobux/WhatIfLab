@@ -92,8 +92,8 @@
 							// Original mode: display raw output with words not in modified output highlighted in red
 							for (const word of rawWords) {
 								if (!word.trim()) {
-									// Preserve whitespace
-									htmlContent += word;
+									// Preserve whitespace and convert line breaks to HTML
+									htmlContent += word.replace(/\n/g, '<br>');
 								} else if (!modifiedWordSet.has(word)) {
 									// Word exists in raw but not in modified - removed
 									htmlContent += `<span data-diff-type="removed" class="bg-red-200 text-red-900 line-through">${word}</span>`;
@@ -106,8 +106,8 @@
 							// Modified mode: display modified output with words not in raw output highlighted in green
 							for (const word of modifiedWords) {
 								if (!word.trim()) {
-									// Preserve whitespace
-									htmlContent += word;
+									// Preserve whitespace and convert line breaks to HTML
+									htmlContent += word.replace(/\n/g, '<br>');
 								} else if (!rawWordSet.has(word)) {
 									// Word exists in modified but not in raw - added
 									htmlContent += `<span data-diff-type="added" class="bg-green-200 text-green-900">${word}</span>`;
@@ -120,15 +120,14 @@
 						
 						console.log('OutputViewer - HTML content:', htmlContent);
 						
-						// Set content with HTML to preserve marks
+						// Set content with HTML to preserve marks and line breaks
 						$editorStore.commands.setContent(htmlContent);
 					} else {
 						// No comparison available, just set the appropriate content based on mode
-						if (mode === 'original') {
-							$editorStore.commands.setContent(currentRawOutput);
-						} else {
-							$editorStore.commands.setContent(currentModifiedOutput || currentRawOutput);
-						}
+						// Convert line breaks to HTML <br> tags for proper formatting
+						const contentToDisplay = mode === 'original' ? currentRawOutput : (currentModifiedOutput || currentRawOutput);
+						const formattedContent = contentToDisplay.replace(/\n/g, '<br>');
+						$editorStore.commands.setContent(formattedContent);
 					}
 				} finally {
 					isApplyingMarks = false;

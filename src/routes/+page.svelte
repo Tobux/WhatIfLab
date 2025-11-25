@@ -13,6 +13,7 @@
 	let systemPrompt = $state('');
 	let promptText = $state('');
 	let promptComments = $state<Comment[]>([]);
+	let enhancedPrompt = $state('');
 	let rawOutput = $state('');
 	let modifiedOutput = $state('');
 	let outputStats = $state({
@@ -45,6 +46,7 @@
 
 			rawOutput = result.initialOutput;
 			modifiedOutput = result.editedOutput;
+			enhancedPrompt = result.enhancedPrompt;
 			outputStats = {
 				time: timeInSeconds,
 				tokens: (result.initialUsage?.totalTokens || 0) + (result.editedUsage?.totalTokens || 0)
@@ -64,6 +66,6 @@
 	<ModelSettings bind:selectedModel={selectedModel} bind:temperature={temperature} bind:maxTokens={maxTokens} />
 	<SystemPrompt bind:value={systemPrompt} />
 	<PromptEditor bind:value={promptText} bind:comments={promptComments} onsubmit={handleSubmit} bind:isGenerating={isGenerating} />
-	<OutputData bind:rawOutput={rawOutput} bind:modifiedOutput={modifiedOutput} />
+	<OutputData bind:rawOutput={rawOutput} bind:modifiedOutput={modifiedOutput} bind:enhancedPrompt={enhancedPrompt} />
 	<Statistics bind:stats={outputStats} />
 </div>
