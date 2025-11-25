@@ -63,7 +63,7 @@
 <div class="space-y-4">
 	<ModelSettings bind:selectedModel={selectedModel} bind:temperature={temperature} bind:maxTokens={maxTokens} />
 	<SystemPrompt bind:value={systemPrompt} />
-	<PromptEditor bind:value={promptText} bind:comments={promptComments} onsubmit={handleSubmit} />
+	<PromptEditor bind:value={promptText} bind:comments={promptComments} onsubmit={handleSubmit} bind:isGenerating={isGenerating} />
 	<OutputData bind:rawOutput={rawOutput} bind:modifiedOutput={modifiedOutput} />
 	<Statistics bind:stats={outputStats} />
 </div>

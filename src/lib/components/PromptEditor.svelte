@@ -7,11 +7,13 @@
 	let {
 		value = $bindable(''),
 		comments = $bindable<Comment[]>([]),
-		onsubmit
+		onsubmit,
+		isGenerating = $bindable(false)
 	}: {
 		value?: string;
 		comments?: Comment[];
 		onsubmit?: () => void;
+		isGenerating?: boolean;
 	} = $props();
 
 	let showCommentDialog = $state(false);
@@ -150,18 +152,23 @@
 							Add Comment
 						</button>
 					</div>
-					<button class="btn btn-sm btn-primary" onclick={onsubmit}>
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							class="h-5 w-5"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke="currentColor"
-							stroke-width="2"
-						>
-							<path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-						</svg>
-						Submit
+					<button class="btn btn-sm btn-primary" onclick={onsubmit} disabled={isGenerating}>
+						{#if isGenerating}
+							<span class="loading loading-xs loading-spinner"></span>
+							Generating...
+						{:else}
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="h-5 w-5"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke="currentColor"
+								stroke-width="2"
+							>
+								<path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+							</svg>
+							Submit
+						{/if}
 					</button>
 				</div>
 			</div>
